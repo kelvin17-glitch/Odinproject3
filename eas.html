@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="controls">
+        <p>Click the button below to create a grid of choosen number of squares per side: </p>
+        <button id="resetButton">Create New Grid</button>
+    </div>
+    <div class="grid-container" id="gridContainer"></div>
+
+    <script>
+        // Select Container and Button Elements
+        const gridContainer = document.getElementById('gridContainer');
+        const resetButton = document.getElementById('resetButton');
+        
+        // Function to create the grid
+        function createGrid(size) {
+            // Clear existing grid
+            gridContainer.innerHTML = '';
+
+            // Calculate size for each grid item
+            const gridSize = gridContainer.clientWidth / size;
+
+            // Create new grid items
+            for (let i = 0; i < size * size; i++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
+                gridItem.style.width = `${gridSize}px`;
+                gridItem.style.height = `${gridSize}px`;
+
+                // Add hover effect
+                gridItem.addEventListener('mouseover', () => {
+                    // Color trail
+                    gridItem.style.backgroundColor = '#3498db';
+                });
+
+                gridContainer.appendChild(gridItem);
+            }
+        }
+
+        // Function to reset grid size
+        function resetGrid() {
+            let gridSize = parseInt(prompt('Enter grid size(max: 100): ', 10));
+
+            // Validate input
+            if (isNaN(gridSize) || gridSize <= 0 || gridSize > 100) {
+                alert('Invalid input. Please enter a number between 1 and 100');
+                return;
+            }
+
+            createGrid(gridSize);
+        }
+
+        // Set up initial grid
+        createGrid(16);
+
+        // Set up reset button click event
+        resetButton.addEventListener('click', resetGrid);
+    </script>
+</body>
+</html>

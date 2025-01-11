@@ -13,12 +13,13 @@ body {
     flex-wrap: wrap;
     width: 480px;
     height: 480px;
-    background-color: gray;
+    border: 1px solid #ccc;
 }
 
 .grid-item {
     border: 1px solid #ddd;
     box-sizing: border-box;
+    opacity: 1; /*For the darkening effect */
 }
 
 #controls {

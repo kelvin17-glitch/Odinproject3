@@ -46,6 +46,14 @@
                 gridItem.addEventListener('mouseover', () => {
                     // Color trail
                     gridItem.style.backgroundColor = randomColor();
+
+                    // Reduce visibility by 10%
+                    let currentOpacity = parseFloat(gridItem.style.opacity) || 1;
+                    if (currentOpacity > 0.1) {
+                        gridItem.style.opacity = currentOpacity - 0.1;
+                    } else {
+                        gridItem.style.backgroundColor = 'black';
+                    }
                 });
 
                 gridContainer.appendChild(gridItem);

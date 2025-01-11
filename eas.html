@@ -33,10 +33,19 @@
                 gridItem.style.width = `${gridSize}px`;
                 gridItem.style.height = `${gridSize}px`;
 
+                // Function to randomize background color on hover
+                function randomColor() {
+                    var r = (Math.floor(Math.random() * 256));
+                    var g = (Math.floor(Math.random() * 256));
+                    var b = (Math.floor(Math.random() * 256));
+
+                    return `rgb(${r}, ${g}, ${b})`;
+                }
+
                 // Add hover effect
                 gridItem.addEventListener('mouseover', () => {
                     // Color trail
-                    gridItem.style.backgroundColor = '#3498db';
+                    gridItem.style.backgroundColor = randomColor();
                 });
 
                 gridContainer.appendChild(gridItem);
